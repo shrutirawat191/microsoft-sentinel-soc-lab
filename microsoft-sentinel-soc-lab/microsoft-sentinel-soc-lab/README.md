@@ -12,19 +12,31 @@ A hands-on learning portfolio documenting Microsoft Sentinel configuration and S
 - Explore KQL-based threat hunting and scheduled analytics rules.
 - Understand how Sentinel playbooks/Logic Apps and Workbooks can support incident response and SOC monitoring.
 
+## Technologies and Tools
+
+- Microsoft Azure
+- Microsoft Sentinel
+- Azure Log Analytics
+- Microsoft Defender Threat Intelligence
+- PulseDive
+- Windows Event Viewer
+- Kusto Query Language (KQL)
+- Azure Logic Apps
+- Sentinel Playbooks
+
 ## Repository structure
 
-- `screenshots/` — images extracted from the original lab document. Review each image and rename it to a descriptive filename before publishing.
+- `screenshots/` — images extracted from the original lab document. 
 - `projects/` — individual lab write-ups and evidence checklists.
-- `queries/` — a starter KQL query file. Validate table names and schema in your workspace before running queries.
+- `queries/` — a starter KQL query file.
 
 ## Lab environment
 
-- Cloud platform: Microsoft Azure
-- SIEM: Microsoft Sentinel
-- Log storage/querying: Log Analytics workspace
-- Threat intelligence mentioned in notes: PulseDive and Microsoft Defender Threat Intelligence
-- Query language: Kusto Query Language (KQL)
+The lab uses an Azure environment with a Resource Group (RG) and Log Analytics Workspace (LAW).
+
+Microsoft Sentinel is used to explore security monitoring, threat detection, and incident response workflows.
+
+Some exercises depend on connector availability, permissions, licensing, and Azure subscription capabilities. The completion status of each activity is documented separately.
 
 ## Projects
 
