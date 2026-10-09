@@ -1,0 +1,18 @@
+// Microsoft Sentinel SOC Lab — starter queries
+// Validate table availability and schema in your workspace before running.
+
+// 1. Explore Windows Security event counts (requires SecurityEvent table)
+SecurityEvent
+| where TimeGenerated > ago(24h)
+| summarize EventCount = count() by EventID
+| order by EventCount desc
+
+// 2. Review recent sign-in activity (requires SigninLogs table and permissions)
+// Uncomment and run only if SigninLogs is available.
+// SigninLogs
+// | where TimeGenerated > ago(24h)
+// | summarize SignInCount = count() by ResultType, AppDisplayName
+// | order by SignInCount desc
+
+// Note: These are exploratory queries, not validated detections.
+// Add detection queries only after checking the relevant schema and testing against lab data.
