@@ -54,5 +54,3 @@ To verify data ingestion, open the Log Analytics workspace connected to Microsof
 <img width="1142" height="522" alt="image" src="https://github.com/user-attachments/assets/e9127150-92f2-4a88-abb5-3cb6894a9eb2" />
 
 
-- **Events observed:** Add only what you verified.
-- **Troubleshooting:** Document missing logs, permissions, or connectivity issues.
