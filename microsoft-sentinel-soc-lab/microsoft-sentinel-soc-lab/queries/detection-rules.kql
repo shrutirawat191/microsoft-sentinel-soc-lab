@@ -1,16 +1,28 @@
 Microsoft Sentinel SOC Lab — starter queries
-// Validate table availability and schema in your workspace before running.
 
 1. Explore Windows Security event counts (requires SecurityEvent table)
+
 SecurityEvent
 | where TimeGenerated > ago(24h)
 | summarize EventCount = count() by EventID
 | order by EventCount desc
 
 2. Review recent sign-in activity (requires SigninLogs table and permissions)
-// Uncomment and run only if SigninLogs is available.
+
  SigninLogs
 | where TimeGenerated > ago(24h)
 | summarize SignInCount = count() by ResultType, AppDisplayName
 | order by SignInCount desc
+
+3. Detect Brute Force 
+
+                  SecurityEvent
+                  |where EventID == 4625
+                  |project TimeGenerated, Account, EventID, IpAddress
+                  |where IpAddress != "-"
+                  |summarize count() by Account, EventID, IpAddress, bin(TimeGenerated, 1m)
+                  |where count_ >= 5
+
+4. detect Audit logs cleared activity in critical servers
+
 
