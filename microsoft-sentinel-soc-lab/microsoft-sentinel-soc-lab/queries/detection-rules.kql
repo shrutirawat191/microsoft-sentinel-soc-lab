@@ -29,4 +29,8 @@ SecurityEvent
                           | where EventID == 1102
                           | project Activity, Computer, EventID, EventLevelName, EventSourceName
 
-5. 
+5. Frequently triggered security alerts
+
+                                SecurityAlert
+                                | summarize Alertcount = count() by Alertname
+                                | sort by Alertcount desc
