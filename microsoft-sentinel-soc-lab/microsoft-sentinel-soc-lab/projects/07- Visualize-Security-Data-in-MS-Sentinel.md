@@ -17,6 +17,10 @@ In this example, we will create a workbook that will help visualize frequently t
 
 <img width="975" height="401" alt="image" src="https://github.com/user-attachments/assets/62cad8c9-add8-4445-a929-4e21e08cb910" />
 
+                                    SecurityAlert
+                                    | summarize Alertcount = count() by Alertname
+                                    | sort by Alertcount desc
+
 <img width="975" height="208" alt="image" src="https://github.com/user-attachments/assets/86aadd76-6721-4676-8cbe-94cf17f33f38" />
 
 <img width="975" height="420" alt="image" src="https://github.com/user-attachments/assets/7cab04a2-0451-4865-b5a9-5ef7f4ed7622" />
