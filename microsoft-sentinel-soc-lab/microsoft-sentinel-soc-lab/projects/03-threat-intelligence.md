@@ -40,6 +40,3 @@ PulseDive was selected as the threat intelligence platform in this lab.
 
     <img width="498" height="650" alt="image" src="https://github.com/user-attachments/assets/d79c19cd-f791-4642-ab76-85ea57ab9a56" />
 
-
-
-
