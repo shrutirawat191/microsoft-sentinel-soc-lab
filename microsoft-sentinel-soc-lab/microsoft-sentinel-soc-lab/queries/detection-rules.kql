@@ -25,4 +25,8 @@ SecurityEvent
 
 4. detect Audit logs cleared activity in critical servers
 
+                          SecurityEvent
+                          | where EventID == 1102
+                          | project Activity, Computer, EventID, EventLevelName, EventSourceName
 
+5. 
