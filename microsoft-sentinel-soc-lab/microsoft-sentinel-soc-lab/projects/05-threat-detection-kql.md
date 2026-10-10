@@ -24,6 +24,7 @@ _Describe the Rule (Ex: Brute Force)_
 _Create a Rule Query_
 
 Use the following query:
+
                       SecurityEvent
                       |where EventID == 4625
                       |project TimeGenerated, Account, EventID, IpAddress
@@ -87,23 +88,23 @@ Checked Incidents, and sure enough an incident was reported
 **Next Steps as a SOC Analyst**
 
 • Triage the incident
-  o Check the incident details to get the machine name, username, time of event, and any other related information.
-  o Confirm it’s not a false positive (Was this done by the IT department during maintenance?)
+  - Check the incident details to get the machine name, username, time of event, and any other related information.
+  - Confirm it’s not a false positive (Was this done by the IT department during maintenance?)
   
 • Investigate in depth
-  o Run a query to see what happened right before the log was cleared
-  o Look for suspicious logon events, privilege changes, multiple failed logins, etc.
+  - Run a query to see what happened right before the log was cleared
+  - Look for suspicious logon events, privilege changes, multiple failed logins, etc.
   
 • Correlate with other Data Sources
-  o Check Defender for Endpoint, firewall logs, or more.
-  o Look for file access, PowerShell commands, or process creation events around the same time.
+  - Check Defender for Endpoint, firewall logs, or more.
+  - Look for file access, PowerShell commands, or process creation events around the same time.
   
 • Determine severity
-  o Escalate to incident response if necessary
+  - Escalate to incident response if necessary
   
 • Document everything
-  o Add investigation steps, findings, and decision-making to the incident record
-  o Include all information found
+  - Add investigation steps, findings, and decision-making to the incident record
+  - Include all information found
   
 • Take preventative measures
-  o Learn from the experience, and take measures to prevent it in the future
+  - Learn from the experience, and take measures to prevent it in the future
