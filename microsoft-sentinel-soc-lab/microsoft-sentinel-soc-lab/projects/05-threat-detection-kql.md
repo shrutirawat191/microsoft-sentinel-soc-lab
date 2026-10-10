@@ -69,6 +69,10 @@ MITRE ATT&CK Mappings:
 
 <img width="975" height="514" alt="image" src="https://github.com/user-attachments/assets/c5de0f2a-89a1-4b75-80fb-b6c76fae291d" />
 
+                              SecurityEvent
+                              | where EventID == 1102
+                              | project Activity, Computer, EventID, EventLevelName, EventSourceName
+
 This query finds all cases where the Windows Security Audit Log was cleared, and lists the computer name, event details, and activity description.
 
 <img width="975" height="379" alt="image" src="https://github.com/user-attachments/assets/502b9db9-2145-4e5b-809d-b746be7ea3e4" />
