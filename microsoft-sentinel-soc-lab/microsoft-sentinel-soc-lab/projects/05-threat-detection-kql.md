@@ -25,11 +25,11 @@ _Create a Rule Query_
 
 Use the following query:
                       SecurityEvent
-                      | where EventID == 4625
-                      | project TimeGenerated, Account, EventID, IpAddress
-                      | where IpAddress != "-"
-                      | summarize count() by Account, EventID, IpAddress, bin(TimeGenerated, 1m)
-                      | where count_ >= 5
+                      |where EventID == 4625
+                      |project TimeGenerated, Account, EventID, IpAddress
+                      |where IpAddress != "-"
+                      |summarize count() by Account, EventID, IpAddress, bin(TimeGenerated, 1m)
+                      |where count_ >= 5
 
 This query searches for failed login events (EventID 4625) in SecurityEvent logs, extracts the IP address involved in each failure, then counts how many times each account is targeted from each IP address within 1-minute intervals. It filters to show only cases where there are 5 or more failed attempts in one minute from the same IP and account, which helps identify
 possible brute force attacks.
