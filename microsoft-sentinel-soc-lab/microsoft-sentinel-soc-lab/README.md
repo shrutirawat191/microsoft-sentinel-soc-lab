@@ -45,4 +45,5 @@ Some exercises depend on connector availability, permissions, licensing, and Azu
 3. [Threat intelligence and IoCs](projects/03-threat-intelligence.md)
 4. [Windows log ingestion](projects/04-windows-log-ingestion.md)
 5. [Threat detection with KQL](projects/05-threat-detection-kql.md)
-6. [Automation and workbooks](projects/06-automation-and-workbooks.md)
+6. [Automation](projects/06-automation.md)
+7. [Visualize security data](projects/07-Visualize-Security-Data-in-MS-Sentinel.md)
