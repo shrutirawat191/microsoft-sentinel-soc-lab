@@ -44,6 +44,7 @@ All testing should be performed in an isolated lab using disposable, non-privile
 ### Create the KQL Detection Query
 
 The following query searches Windows Security events for the AllowedToDelegateTo field.
+
                                               let exclusions = dynamic(["-", "0x0"]);
                                               SecurityEvent
                                               | where EventData contains "AllowedToDelegateTo"
