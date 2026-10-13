@@ -99,6 +99,7 @@ Make changes in domain joined ClientVM delegation properties to trigger the aler
 
 <img width="975" height="502" alt="image" src="https://github.com/user-attachments/assets/79225761-c328-4011-8053-f922ae01a011" />
 
-<img width="975" height="676" alt="image" src="https://github.com/user-attachments/assets/f03d8a70-3088-438b-a003-644de58ee69f" />
+<img width="898" height="596" alt="image" src="https://github.com/user-attachments/assets/5f4ebb11-b0d6-4ce1-aa07-43161309dbee" />
+
 
 
