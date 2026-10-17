@@ -16,52 +16,53 @@ SecurityEvent
 
 3. Detect Brute Force 
 
-                  SecurityEvent
-                  |where EventID == 4625
-                  |project TimeGenerated, Account, EventID, IpAddress
-                  |where IpAddress != "-"
-                  |summarize count() by Account, EventID, IpAddress, bin(TimeGenerated, 1m)
-                  |where count_ >= 5
+SecurityEvent
+|where EventID == 4625
+|project TimeGenerated, Account, EventID, IpAddress
+|where IpAddress != "-"
+|summarize count() by Account, EventID, IpAddress, bin(TimeGenerated, 1m)
+|where count_ >= 5
 
 4. detect Audit logs cleared activity in critical servers
 
-                          SecurityEvent
-                          | where EventID == 1102
-                          | project Activity, Computer, EventID, EventLevelName, EventSourceName
+
+SecurityEvent
+| where EventID == 1102
+| project Activity, Computer, EventID, EventLevelName, EventSourceName
 
 5. Frequently triggered security alerts
 
-                                SecurityAlert
-                                | summarize Alertcount = count() by Alertname
-                                | sort by Alertcount desc
+SecurityAlert
+| summarize Alertcount = count() by Alertname
+| sort by Alertcount desc
 
 6. Active Directory Delegation Detetction
 
-                                          let exclusions = dynamic(["-", "0x0"]);
-                                          SecurityEvent
-                                          | where EventData contains "AllowedToDelegateTo"
-                                          | extend AllData = tostring(parse_xml(EventData))
-                                          | extend DelegatedTo = parse_json(AllData)['EventData']['Data'][20]["#text"]
-                                          | where not (DelegatedTo in (exclusions))
+let exclusions = dynamic(["-", "0x0"]);
+SecurityEvent
+| where EventData contains "AllowedToDelegateTo"
+| extend AllData = tostring(parse_xml(EventData))
+| extend DelegatedTo = parse_json(AllData)['EventData']['Data'][20]["#text"]
+| where not (DelegatedTo in (exclusions))
 
 7. Inbound Authentication from Public IP
 
-                                                    let AllowedEntpoints = pack_array('devicename');
-                                                    SecurityEvent
-                                                    | where EventID in ('4625', '4624')
-                                                    | where Computer !in(AllowedEntpoints)
-                                                    | where not(ipv4_is_private(IpAddress))
-                                                    | summarize arg_min(TimeGenerated, *) by Computer
-                                                    | lookup kind=leftouter (DeviceInfo
-                                                       | summarize arg_max(TimeGenerated, *) by DeviceId
-                                                       | project DeviceName = toupper(DeviceName), DeviceType, PublicIP, ExposureLevel, MachineGroup) on $left.Computer == $right.DeviceName
+let AllowedEntpoints = pack_array('devicename');
+SecurityEvent
+| where EventID in ('4625', '4624')
+| where Computer !in(AllowedEntpoints)
+| where not(ipv4_is_private(IpAddress))
+| summarize arg_min(TimeGenerated, *) by Computer
+| lookup kind=leftouter (DeviceInfo
+| summarize arg_max(TimeGenerated, *) by DeviceId
+| project DeviceName = toupper(DeviceName), DeviceType, PublicIP, ExposureLevel, MachineGroup) on $left.Computer == $right.DeviceName
 
 8. Password Spraying Detection
 
-                            SecurityEvent
-                            | where EventID == 4625
-                            | where isnotempty(IpAddress) and IpAddress != "-"
-                            | where isnotempty(TargetAccount)
-                            | summarize FailedAttempts = count(), TargetedAccounts = dcount(TargetAccount), Accounts = make_set(TargetAccount, 50), FirstSeen = min(TimeGenerated), LastSeen = max(TimeGenerated) by IpAddress, bin(TimeGenerated, 15m)
-                            | where TargetedAccounts >= 5
-                            | order by TargetedAccounts desc
+SecurityEvent
+| where EventID == 4625
+| where isnotempty(IpAddress) and IpAddress != "-"
+| where isnotempty(TargetAccount)
+| summarize FailedAttempts = count(), TargetedAccounts = dcount(TargetAccount), Accounts = make_set(TargetAccount, 50), FirstSeen = min(TimeGenerated), LastSeen = max(TimeGenerated) by IpAddress, bin(TimeGenerated, 15m)
+| where TargetedAccounts >= 5
+| order by TargetedAccounts desc
