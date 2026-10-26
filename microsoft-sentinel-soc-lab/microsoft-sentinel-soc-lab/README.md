@@ -50,3 +50,4 @@ Some exercises depend on connector availability, permissions, licensing, and Azu
 8. [Active Directory Delegation Detection](projects/active-directory-delegation-detection.md)
 9. [Inbound Authentication from Public IP](projects/Inbound-Authentication-from-Public-IP.md)
 10. [Password Spraying Detection](projects/Password-Spraying-Detection.md)
+11. [Brute-Force Attempt Investigation](projects/Brute-Force-Attempt-Investigation.md)
