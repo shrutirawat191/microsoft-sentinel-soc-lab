@@ -47,3 +47,4 @@ Some exercises depend on connector availability, permissions, licensing, and Azu
 5. [Threat detection with KQL](projects/05-threat-detection-kql.md)
 6. [Automation](projects/06-automation.md)
 7. [Visualize security data](projects/07-Visualize-Security-Data-in-MS-Sentinel.md)
+8. [Brute-Force Attempt Investigation](projects/Brute-Force-Attempt-Investigation.md)
